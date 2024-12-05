@@ -8,14 +8,24 @@ import (
 	"github.com/labstack/echo"
 )
 
-func StartServer() {
+type Config struct {
+	urlViaCep  string
+	urlClimate string
+	keyClimate string
+}
 
-	urlViaCEP := "https://viacep.com.br"
-	urlClimate := "https://api.weatherapi.com"
-	keyClimate := "1875c3e3f3284760bfb201107240212"
+func NewServer(urlClimate, keyClimate, urlViaCep string) *Config {
+	return &Config{
+		urlViaCep:  urlViaCep,
+		urlClimate: urlClimate,
+		keyClimate: keyClimate,
+	}
+}
 
-	climateApi := weatherapi.NewWeatherApi(urlClimate, keyClimate)
-	viaCepApi := viacepapi.NewViaCepApi(urlViaCEP)
+func (c *Config) StartServer() {
+
+	climateApi := weatherapi.NewWeatherApi(c.urlClimate, c.keyClimate)
+	viaCepApi := viacepapi.NewViaCepApi(c.urlViaCep)
 	currentClimateUsecase := usecases.NewCurrentClimateUsecase(viaCepApi, climateApi)
 	currentClimateHandler := controllers.NewCurrentClimateHandler(currentClimateUsecase)
 
