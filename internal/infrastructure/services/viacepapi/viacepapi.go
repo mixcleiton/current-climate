@@ -39,6 +39,10 @@ func (v *viacepapi) GetLocation(cep int) (*entities.CEP, error) {
 		return nil, fmt.Errorf("error to convert json in response")
 	}
 
+	if viaCepResponse.CEP == "" {
+		return nil, fmt.Errorf("error to find address")
+	}
+
 	return &entities.CEP{
 		Locality:       viaCepResponse.Localidade,
 		Identification: viaCepResponse.CEP,

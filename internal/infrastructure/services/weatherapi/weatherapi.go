@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 
 	"br.com.cleiton/current-climate/internal/domain/entities"
@@ -39,6 +40,7 @@ func (w *weatherapi) GetCurrentClimate(locaty string) (*entities.CurrentClimate,
 	var currentResponse WeatherCurrentResponse
 	err = json.Unmarshal(body, &currentResponse)
 	if err != nil {
+		log.Printf("error to convert json, err %s", err)
 		return nil, fmt.Errorf("error to convert json in response")
 	}
 

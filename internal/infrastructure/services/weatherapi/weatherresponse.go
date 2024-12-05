@@ -16,7 +16,7 @@ type Current struct {
 	WindKph          float64 `json:"wind_kph"`
 	WindDegree       int     `json:"wind_degree"`
 	WindDir          string  `json:"wind_dir"`
-	PressureMB       int     `json:"pressure_mb"`
+	PressureMB       float64 `json:"pressure_mb"`
 	PressureIn       float64 `json:"pressure_in"`
 	PrecipMM         float64 `json:"precip_mm"`
 	PrecipIn         float64 `json:"precip_in"`
@@ -32,8 +32,8 @@ type Current struct {
 	DewpointC  float64 `json:"dewpoint_c"`
 	DewpointF  float64 `json:"dewpoint_f"`
 
-	VisKM    int     `json:"vis_km"`
-	VisMiles int     `json:"vis_miles"`
+	VisKM    float64 `json:"vis_km"`
+	VisMiles float64 `json:"vis_miles"`
 	Uv       float64 `json:"uv"`
 	GustMPH  float64 `json:"gust_mph"`
 	GustKph  float64 `json:"gust_kph"`
