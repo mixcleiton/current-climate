@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	viper.SetConfigFile("config.env")
+	viper.SetConfigFile(".env")
 	viper.ReadInConfig()
 
 	urlViaCep := viper.GetString("URL_VIA_CEP")
